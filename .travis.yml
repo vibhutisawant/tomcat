@@ -60,7 +60,7 @@ install:
     - cd openssl-3.0.3
     - ./config no-threads shared enable-ssl3 enable-ssl3-method -g --prefix=/usr/local -DPURIFY
     - make -j$(nproc)
-    - sudo make PATH=$PATH install_sw
+    - sudo make install
     - git clone -q -b 1.6.x --single-branch https://github.com/apache/apr.git $HOME/tmp/apr
     - cd $HOME/tmp/apr
     - ./buildconf
