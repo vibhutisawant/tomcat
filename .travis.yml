@@ -61,7 +61,7 @@ install:
     - ant -version
     - rm -rf $HOME/tmp
     - export CURR_PWD=`pwd`
-    - wget --no-check-certificate https://www.openssl.org/source/openssl-$OPENSSL_VER.tar.gz
+    - wget https://www.openssl.org/source/openssl-3.0.3.tar.gz
     - tar xvf openssl-$OPENSSL_VER.tar.gz
     - cd openssl-$OPENSSL_VER
     - ./config no-threads shared enable-ssl3 enable-ssl3-method -g --prefix=$OPENSSL_PREFIX -DPURIFY
