@@ -24,12 +24,6 @@ jobs:
       - arch: ppc64le
         jdk: oraclejdk11
 
-env:
-  - OPENSSL_PREFIX=/usr/local
-  - OPENSSL_INC=$OPENSSL_PREFIX/include
-  - OPENSSL_LIB=$OPENSSL_PREFIX/lib
-  - OPENSSL_VER=3.0.3
-
 addons:
     apt:
       packages:
@@ -62,9 +56,9 @@ install:
     - rm -rf $HOME/tmp
     - export CURR_PWD=`pwd`
     - wget https://www.openssl.org/source/openssl-3.0.3.tar.gz
-    - tar xvf openssl-$OPENSSL_VER.tar.gz
-    - cd openssl-$OPENSSL_VER
-    - ./config no-threads shared enable-ssl3 enable-ssl3-method -g --prefix=$OPENSSL_PREFIX -DPURIFY
+    - tar xvf openssl-3.0.3.tar.gz
+    - cd openssl-3.0.3
+    - ./config no-threads shared enable-ssl3 enable-ssl3-method -g --prefix=/usr/local -DPURIFY
     - make -j$(nproc)
     - sudo make PATH=$PATH install_sw
     - git clone -q -b 1.6.x --single-branch https://github.com/apache/apr.git $HOME/tmp/apr
