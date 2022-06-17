@@ -51,16 +51,18 @@ install:
     - wget -q https://mirrors.netix.net/apache/ant/binaries/apache-ant-1.10.12-bin.tar.gz && tar xzf apache-ant-*-bin.tar.gz
     - export ANT_HOME=`pwd`/apache-ant-1.10.12
     - export PATH="$JAVA_HOME/bin:$ANT_HOME/bin:$PATH"
+    - sudo apt install -y build-essential checkinstall zlib1g-dev 
+    - wget https://www.openssl.org/source/openssl-3.0.3.tar.gz
+    - tar -xf openssl-3.0.3.tar.gz
+    - cd openssl-3.0.3
+    - ./config --prefix=/usr/local/ssl --openssldir=/usr/local/ssl shared zlib
+    - make 
+    - make install
+    - cd $CURR_PWD
     - java -version
     - ant -version
     - rm -rf $HOME/tmp
     - export CURR_PWD=`pwd`
-    - wget https://www.openssl.org/source/openssl-3.0.3.tar.gz
-    - tar xvf openssl-3.0.3.tar.gz
-    - cd openssl-3.0.3
-    - ./config no-threads shared enable-ssl3 enable-ssl3-method -g --prefix=/usr/local -DPURIFY
-    - make -j$(nproc)
-    - sudo make install
     - git clone -q -b 1.6.x --single-branch https://github.com/apache/apr.git $HOME/tmp/apr
     - cd $HOME/tmp/apr
     - ./buildconf
