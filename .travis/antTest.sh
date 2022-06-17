@@ -21,6 +21,7 @@
 # much logging on stdout
 
 ant -q test 2>&1 > ant-test.log
+cat ant-test.log
 RC=$?
 {
     if grep -q "Testsuites with failed tests:" ant-test.log; then
