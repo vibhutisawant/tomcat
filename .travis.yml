@@ -52,13 +52,13 @@ install:
     - export ANT_HOME=`pwd`/apache-ant-1.10.12
     - export PATH="$JAVA_HOME/bin:$ANT_HOME/bin:$PATH"
     - export CURR_PWD=`pwd`
-    - sudo apt install -y build-essential checkinstall zlib1g-dev 
-    - wget https://www.openssl.org/source/openssl-3.0.3.tar.gz
-    - tar -xf openssl-3.0.3.tar.gz
-    - cd openssl-3.0.3
-    - ./config --prefix=/opt/ssl --openssldir=/opt/ssl shared zlib
-    - make 
-    - make install
+    #- sudo apt install -y build-essential checkinstall zlib1g-dev 
+    #- wget https://www.openssl.org/source/openssl-3.0.3.tar.gz
+    #- tar -xf openssl-3.0.3.tar.gz
+    #- cd openssl-3.0.3
+    #- ./config --prefix=/opt/ssl --openssldir=/opt/ssl shared zlib
+    #- make 
+    #- make install
     - cd $CURR_PWD
     - java -version
     - ant -version
@@ -73,7 +73,7 @@ install:
     - git clone -q https://github.com/apache/tomcat-native.git $HOME/tmp/tomcat-native
     - cd $HOME/tmp/tomcat-native/native
     - sh buildconf --with-apr=$HOME/tmp/apr
-    - ./configure --with-apr=$HOME/tmp/apr --with-java-home=$JAVA_HOME --with-ssl=/opt/ssl --prefix=$HOME/tmp/tomcat-native-build
+    - ./configure --with-apr=$HOME/tmp/apr --with-java-home=$JAVA_HOME --with-ssl=yes --prefix=$HOME/tmp/tomcat-native-build
     - make
     - make install
     - cd $CURR_PWD
